@@ -38,22 +38,44 @@ class Simulation:
         self.generatePeople()
         self.randomlyDistributePeople()
 
-        for country in self.world.WorldList:
+        """for country in self.world.WorldList:
             print(country)
             print(country.numberOfPeople())
-            print(country.numberOfIncubatedPeople())
+            print(country.numberOfIncubatedPeople())"""
+
+    def showStateStatistics(self, state):
+            print(self.world.numberOfPeopleInStateWorld(state))
+
+    def showStatistics(self):
+        print("healty:")
+        self.showStateStatistics(human.HumanState.healty)
+        print("incubation:")
+        self.showStateStatistics(human.HumanState.incubation)
+        print("visiblyinfectious:")
+        self.showStateStatistics(human.HumanState.visiblyinfectious)
+        print("death:")
+        self.showStateStatistics(human.HumanState.death)
+        print("immune:")
+        self.showStateStatistics(human.HumanState.immune)
+        print("---------------------------------------------------")
+        print("---------------------------------------------------")
+        print("---------------------------------------------------")
 
     def travel(self):
         self.world.travel()
 
+    def nextStates(self):
+        self.world.nextStates()
+
     def oneDay(self):
         self.travel()
+        self.nextStates()
         self.day +=1
         #self.totalInfectedPeople += 1
 
     def runSimulation(self):
         self.initializeCountries()
-        return
-        while (self.totalInfectedPeople < self.peopleInTheWorld):
+        self.showStatistics()
+        while (self.day < 10):
             self.oneDay()
-            self.day = self.day + 1
+            self.showStatistics()

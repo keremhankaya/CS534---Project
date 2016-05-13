@@ -4,13 +4,13 @@ import random
 
 #Input variables
 WorldDimension = 3
-PeopleInTheWorld = 10000
-InitialInfectedPeoplePercentage = 3
+PeopleInTheWorld = 1000
+InitialInfectedPeoplePercentage = 10
+#deathProbability = 25 #defined in stateMachine
 
 def initializeSystem():
-    new = simulation.Simulation(WorldDimension, PeopleInTheWorld, InitialInfectedPeoplePercentage)
+    newSimulation = simulation.Simulation(WorldDimension, PeopleInTheWorld, InitialInfectedPeoplePercentage)
     #print(new.totalInfectedPeople)
 
 
 initializeSystem()
-#print(random.gauss(2.5,0.2))
